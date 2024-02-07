@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Gallery</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribute images evenly */
+  }
+
+  .image-box {
+    width: calc(50% - 20px); /* Two images per row */
+    margin-bottom: 20px; /* Spacing between rows */
+    text-align: center;
+  }
+
+  .image-box img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .image-text {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  #popupButton {
+    font-size: 1.2rem; /* Increase font size */
+    padding: 12px 24px; /* Increase padding */
+  }
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    display: none;
+    max-width: 90%; /* Limit maximum width */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 80%; /* Limit maximum height */
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  .popup-image {
+    max-width: 90%; /* Adjusted maximum width */
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .popup-button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  #popupBackButton {
+    font-size: 1rem;
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #popupBackButton:hover {
+    background-color: #ff3333;
+  }
+
+  /* Infinity symbol with heart */
+  .infinity-heart {
+    font-size: 2rem;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
+</head>
+<body>
+  <h1 class="infinity-heart">&#10084;</h1> <!-- Infinity symbol and heart -->
+  <h2 style="text-align: center;">HOW OUR FUTURE WILL LOOK LIKE FOREVER &#8734;</h2> <!-- Heading -->
+
+  <div class="container">
+    <div class="image-box">
+      <img src="https://i.imgur.com/Mzjd2PC.jpeg" alt="Image 1">
+      <div class="image-text">Cooking Together</div>
+    </div>
+    <div class="image-box">
+      <img src="https://i.imgur.com/KkOForj.jpeg" alt="Image 2">
+      <div class="image-text">Spending Quality Time Together</div>
+    </div>
+    <div class="image-box">
+      <img src="https://i.imgur.com/Xu9v127.jpeg" alt="Image 3">
+      <div class="image-text">Night Walks and Icecream</div>
+    </div>
+    <div class="image-box">
+      <img src="https://i.imgur.com/3NO8PRL.jpeg" alt="Image 4">
+      <div class="image-text">Hugss All the Time!!!</div>
+    </div>
+    <div class="image-box">
+      <img src="https://i.imgur.com/I2i2tJi.jpeg" alt="Image 5">
+      <div class="image-text">Lotsss of Loveee &hearts; &hearts; &hearts;</div>
+    </div>
+    <div class="image-box">
+      <img src="https://i.imgur.com/eVkVt6g.jpeg" alt="Image 6">
+      <div class="image-text">I will Hold Your Hand Forever.... In all Situations</div>
+    </div>
+    <div class="image-box">
+      <img src="https://i.imgur.com/GA7hgOS.jpeg" alt="Image 7">
+      <div class="image-text">And Getting Old Together</div>
+    </div>
+    <div class="image-box">
+      <img src="https://i.imgur.com/If0SpIu.jpeg" alt="Image 8">
+      <div class="image-text">Travelling the Whole World with You</div>
+    </div>
+  </div>
+  <div class="button-container">
+    <button id="popupButton">US NOW AND FOREVER... &hearts;</button>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-close" onclick="closePopup()">X</div>
+    <p> RAB NE BANA DI JODI!!! </p>
+    <img class="popup-image" src="https://i.imgur.com/ewa6wW7.jpeg" alt="Popup Image"> <!-- Add your image source -->
+    <p>I LOVE YOU YUVU ALWAYS AND FOREVER &hearts;</p>
+    <p>HAPPY PROPOSE DAY LOVEEE!!!</p>
+    <div class="popup-button-container">
+      <button id="popupBackButton" onclick="backToHome()">Back to Days Page</button>
+    </div>
+  </div>
+
+  <script>
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    function backToHome() {
+      window.location.href = "Days.html"; // Change the URL to the home page
+    }
+
+    document.getElementById('popupButton').addEventListener('click', function() {
+      document.getElementById('popup').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
