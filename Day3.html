@@ -112,7 +112,7 @@
             <img src="https://i.imgur.com/0yUoi80.jpeg" alt="Chocolate" class="popup-img"> <!-- Replace with your image URL -->
             <p> I LOVE YOU BABY💕</p>
             <p>&hearts; &hearts; &hearts;</p>
-            <button class="button" onclick="closePopup()">Close</button>
+            <button class="button" onclick="goToDays()">Back to Days Page</button>
         </div>
     </div>
 
@@ -121,8 +121,8 @@
             document.getElementById("popup").style.display = "flex";
         }
 
-        function closePopup() {
-            document.getElementById("popup").style.display = "none";
+        function goToDays() {
+            window.location.href = "Days.html"; // Change "day1.html" to the desired webpage URL
         }
     </script>
 </body>
