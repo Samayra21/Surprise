@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teddy Bear Page</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #000; /* Black background */
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .floating-text {
+      font-size: 48px;
+      font-family: 'Merriweather', serif;
+      color: #FF69B4; /* Pink color */
+      text-align: center;
+      animation: heartbeat 2s infinite; /* Heartbeat animation */
+    }
+
+    .image-beside-text {
+      max-width: 200px;
+      margin-left: 20px; /* Adjust as needed */
+    }
+
+    .teddy-bear {
+      max-width: 100px;
+      opacity: 1; /* Make appearing images stable */
+      position: absolute;
+    }
+    .yes-btn {
+        padding: 15px 15px;
+        font-size: 1.5rem;
+        border-radius: 100%;
+        background-color: #FF69B4; /* Pink color */
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        animation: heartbeat 1s infinite;
+        transform: translateX(-30%);
+    }
+
+    .yes-btn:hover {
+      background-color: #FF1493; /* Darker pink on hover */
+    }
+
+    /* Animation */
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Heart Shape */
+    .heart-shape {
+        position: absolute;
+        width: 10px;
+        margin: 0 10px;
+        transition: transform 0.3s ease;
+        height: 10px;
+        color: #c70039;
+        background-color: #c70039;
+    }
+   
+    /* Adjust positions to fill the page */
+/* Heart positions */
+.heart1 { top: 10%; left: 5%; }
+.heart2 { top: 10%; left: 25%; }
+.heart3 { top: 10%; left: 45%; }
+.heart4 { top: 10%; left: 65%; }
+.heart5 { top: 10%; left: 85%; }
+.heart6 { top: 45%; left: 5%; }
+.heart7 { top: 45%; left: 25%; }
+.heart8 { top: 40%; left: 45%; }
+.heart9 { top: 40%; left: 65%; }
+.heart10 { top: 45%; left: 85%; }
+.heart11 { top: 75%; left: 5%; }
+.heart12 { top: 75%; left: 25%; }
+.heart13 { top: 75%; left: 45%; }
+.heart14 { top: 75%; left: 65%; }
+.heart15 { top: 75%; left: 85%; }
+.heart17 { top: 110%; left: 25%; }
+.heart18 { top: 105%; left: 45%; }
+.heart19 { top: 110%; left: 65%; }
+.heart20 { top: 105%; left: 75%; }
+.heart21 { top: 20%; left: 5%; }
+.heart22 { top: 25%; left: 25%; }
+.heart23 { top: 20%; left: 45%; }
+.heart24 { top: 25%; left: 65%; }
+.heart25 { top: 20%; left: 85%; }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="floating-text">HELLO<br>MY<br>CUTE<br>LIL<br>PANDA!!!</h1>
+    <img class="image-beside-text" src="https://i.imgur.com/iMUx0p4.png" alt="Teddy Bear Image">
+    <button class="heart-btn yes-btn" onclick="goToNextPage()" style="position: absolute; bottom: 100px;">&hearts; CLICK ME LOVE &hearts;</button>
+    <div id="teddy-bear-container">
+      <!-- Images of teddy bears will appear here -->
+    </div>
+  </div>
+
+
+<!-- Heart shapes -->
+<div class="heart-shape heart1"></div>
+<div class="heart-shape heart2"></div>
+<div class="heart-shape heart3"></div>
+<div class="heart-shape heart4"></div>
+<div class="heart-shape heart5"></div>
+<div class="heart-shape heart6"></div>
+<div class="heart-shape heart7"></div>
+<div class="heart-shape heart8"></div>
+<div class="heart-shape heart9"></div>
+<div class="heart-shape heart10"></div>
+<div class="heart-shape heart11"></div>
+<div class="heart-shape heart12"></div>
+<div class="heart-shape heart13"></div>
+<div class="heart-shape heart14"></div>
+<div class="heart-shape heart15"></div>
+<div class="heart-shape heart17"></div>
+<div class="heart-shape heart18"></div>
+<div class="heart-shape heart19"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const teddyBearContainer = document.getElementById('teddy-bear-container');
+      const teddyBearImages = [
+        'https://i.imgur.com/dCZeKLK.png',
+        'https://i.imgur.com/dFwhufu.png',
+        'https://i.imgur.com/QjKoVtd.png',
+        'https://i.imgur.com/cn3LPIs.png',
+        'https://i.imgur.com/g0MW5MK.png',
+        'https://i.imgur.com/60Luxef.png',
+        'https://i.imgur.com/jefqjNY.png'
+      ];
+
+      let teddyCounter = 0;
+      const maxTeddyCount = 120; // Maximum number of teddy bears to generate
+
+      const intervalId = setInterval(function() {
+        if (teddyCounter >= maxTeddyCount) {
+          clearInterval(intervalId); // Stop generating teddy bears
+          return;
+        }
+
+        const teddyImg = document.createElement('img');
+        teddyImg.classList.add('teddy-bear');
+        teddyImg.src = teddyBearImages[Math.floor(Math.random() * teddyBearImages.length)];
+        
+        // Calculate random position within certain distance from text
+        const radius = 350; // Adjust the distance as needed
+        const angle = Math.random() * Math.PI * 2; // Random angle in radians
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
+        
+        // Position teddy bear image
+        teddyImg.style.left = `calc(45% + ${x}px)`;
+        teddyImg.style.top = `calc(45% + ${y}px)`;
+        
+        teddyBearContainer.appendChild(teddyImg);
+
+        teddyCounter++;
+      }, 500); // Adjust the interval as needed (milliseconds)
+    });
+    function goToNextPage() {
+        // Redirect to another page
+        window.location.href = "Day4pg.html";
+    }
+  </script>
+</body>
+</html>
+
+
