@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Hugs day</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header h1 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px #fff, 0 0 15px red, 0 0 20px red, 0 0 25px red, 0 0 30px red;
+        }
+
+        #hug-image {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        #redirect-btn {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            text-style: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #redirect-btn:hover {
+            background-color: #860111;
+        }
+
+        .decoration {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            color: red;
+        }
+
+        .heart {
+            color: #ff6b6b;
+            font-size: 24px;
+            margin: 0 10px;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>&hearts; HAPPY HUGS DAY MY LOVE &hearts;</h1>
+        </header>
+
+        <div class="decoration">
+            <span class="heart">&hearts;</span>
+            <span class="heart">&hearts;</span>
+            <span class="heart">&hearts;</span>
+        </div>
+
+        <img src="https://imgur.com/v4KBByQ.png" id="hug-image" alt="Hug Image">
+    </div>
+    <div class="container">
+        <a href="day6pg.html" id="redirect-btn">Explore More</a>
+    </div>
+</body>
+</html>
+
+
