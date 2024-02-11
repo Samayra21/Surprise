@@ -140,40 +140,41 @@
   </div>
   
   <script>
-       // Function to add user's promises
-   function addPromise(userInput) {
-     var userText = document.getElementById("userText");
+  // Function to add user's promises
+  function addPromise(userInput) {
+    var userText = document.getElementById("userText");
 
-     var newPromise = document.createElement("div");
-     newPromise.className = "userPromise";
-     newPromise.innerHTML = "<p>" + userInput.split("\n").join("<br>") + "</p>";
+    var newPromise = document.createElement("div");
+    newPromise.className = "userPromise";
+    newPromise.innerHTML = "<p>" + userInput.split("\n").join("<br>") + "</p>";
 
-     userText.appendChild(newPromise);
+    userText.appendChild(newPromise);
 
-     // Append new promises to existing ones in localStorage
-     var savedPromises = localStorage.getItem("userPromises");
-     var updatedPromises = savedPromises ? savedPromises + "\n" + userInput : userInput;
-     localStorage.setItem("userPromises", updatedPromises);
-   }
+    // Append new promises to existing ones in localStorage
+    var savedPromises = localStorage.getItem("userPromises");
+    var updatedPromises = savedPromises ? savedPromises + "\n" + userInput : userInput;
+    localStorage.setItem("userPromises", updatedPromises);
+  }
 
-   // Load user's promises from localStorage on page load
-   window.onload = function() {
-     var savedPromises = localStorage.getItem("userPromises");
-     if (savedPromises) {
-       var promisesArray = savedPromises.split("\n");
-       for (var i = 0; i < promisesArray.length; i++) {
-         addPromise(promisesArray[i]);
-       }
+  // Load user's promises from localStorage on page load
+  window.onload = function() {
+    var savedPromises = localStorage.getItem("userPromises");
+    if (savedPromises) {
+      var promisesArray = savedPromises.split("\n");
+      for (var i = 0; i < promisesArray.length; i++) {
+        addPromise(promisesArray[i]);
+      }
 
-       // Disable editing and deleting for already written promises
-       var editButtons = document.getElementsByClassName("editButton");
-       var deleteButtons = document.getElementsByClassName("deleteButton");
-       for (var i = 0; i < editButtons.length; i++) {
-         editButtons[i].classList.add("disabled");
-         deleteButtons[i].classList.add("disabled");
-       }
-     }
-   };
+      // Disable editing and deleting for already written promises
+      var editButtons = document.getElementsByClassName("editButton");
+      var deleteButtons = document.getElementsByClassName("deleteButton");
+      for (var i = 0; i < editButtons.length; i++) {
+        editButtons[i].classList.add("disabled");
+        deleteButtons[i].classList.add("disabled");
+      }
+    }
+  };
+
 
     // Function to confirm submission
     function confirmSubmit() {
