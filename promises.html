@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collage Background</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://imgur.com/gUHXFOz.png'); /* Larger image containing repeated smaller images */
+    background-repeat: repeat; /* Repeat the larger image to fill the entire background */
+    color: white; /* Set text color */
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
+    text-align: center;
+  }
+
+  .highlight {
+    background-color: rgba(255, 255, 255, 0.3); /* Transparent highlight */
+    padding: 5px 10px; /* Add padding to the highlighted text */
+  }
+
+  .userPromise {
+    margin-bottom: 10px;
+  }
+
+  .editButton, .deleteButton {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #843c54;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #userInput {
+    width: 80%; /* Make the input box wider */
+    height: 150px; /* Increase the height of the input box */
+    margin: 20px auto; /* Center the input box */
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+  }
+
+  #submitButton {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: black;
+    border: none;
+    color: #ff0000;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #popupButton {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .editButton.disabled, .deleteButton.disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+
+  /* Popup box */
+  #popupContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+  }
+
+  #popupContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  #popupContent img {
+    max-width: 200px;
+    height: auto;
+    margin: 10px auto;
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Mumu's promises to <span class="highlight">Yuvu &hearts;</span></h1>
+    <p>1. I will always love you no matter what<br>2. I am never going to leave you... we will be together with each other till our last breath<br>3. I am going to take care of you all my life<br>4. I will always protect yoy from everyone<br>5. I will roam the entire world only with you<br>6. My soul is and always be yours<br>7. I will stand by you in your highs and your lows<br>8. You might be shocked after seeing this but I promise to listen and act more on what you ask me to do<br>9. I promise to amke you smile always and forever by doing whatever I can<br>10. I will do all the things and adventures I have thought of with you and only you my love.... and a lot moreee<br><br>Love you more and more,<br><br> From Mumu &hearts;</p>
+  </div>
+  <div class="container">
+    <h1>Yuvu's promises to <span class="highlight">Mumu &hearts;</span></h1>
+    <div id="userText"></div>
+  </div>
+
+  <textarea id="userInput" placeholder="Write your promises here..."></textarea>
+  <button id="submitButton" onclick="confirmSubmit()">Submit</button>
+  <button id="popupButton" onclick="openPopup()">Open Popup</button>
+  <button id="resetButton" onclick="resetPromises()">Reset Promises</button>
+
+  <!-- Popup box -->
+  <div id="popupContainer">
+    <div id="popupContent">
+      <h1>&hearts; HAPPY PROMISE DAY &hearts;</h1>
+      <img src="https://imgur.com/9kKjnCI.jpg" alt="Image">
+      <p>I LOVE YOU YUVU &hearts;<br>We will be together forever.... we will fight through everything and never give up on each other. This is my biggest promise to you and I know this is yours too &hearts;</p>
+      <button onclick="closePopup()">Close</button>
+      <button onclick="redirectToDayPage()">Go to Day's Page</button>
+    </div>
+  </div>
+  
+  <script>
+    // Function to add user's promises
+    function addPromise(userInput) {
+      var userText = document.getElementById("userText");
+
+      var newPromise = document.createElement("div");
+      newPromise.className = "userPromise";
+      newPromise.innerHTML = "<p>" + userInput.split("\n").join("<br>") + "</p>";
+
+      userText.appendChild(newPromise);
+    }
+
+    // Load user's promises from localStorage on page load
+    window.onload = function() {
+      var savedPromises = localStorage.getItem("userPromises");
+      if (savedPromises) {
+        addPromise(savedPromises);
+
+        // Disable editing and deleting for already written promises
+        var editButtons = document.getElementsByClassName("editButton");
+        var deleteButtons = document.getElementsByClassName("deleteButton");
+        for (var i = 0; i < editButtons.length; i++) {
+          editButtons[i].classList.add("disabled");
+          deleteButtons[i].classList.add("disabled");
+        }
+      }
+    };
+
+    // Function to confirm submission
+    function confirmSubmit() {
+      var userInput = document.getElementById("userInput").value;
+      if (confirm("Are you sure you want to submit your promises?")) {
+        addPromise(userInput);
+        localStorage.setItem("userPromises", userInput);
+
+        // Enable editing and deleting for new promises
+        var editButtons = document.getElementsByClassName("editButton");
+        var deleteButtons = document.getElementsByClassName("deleteButton");
+        for (var i = 0; i < editButtons.length; i++) {
+          editButtons[i].classList.remove("disabled");
+          deleteButtons[i].classList.remove("disabled");
+        }
+      }
+    }
+
+    // Function to open popup
+    function openPopup() {
+      document.getElementById("popupContainer").style.display = "block";
+    }
+
+    // Function to close popup
+    function closePopup() {
+      document.getElementById("popupContainer").style.display = "none";
+    }
+
+    // Function to redirect to day's page
+    function redirectToDayPage() {
+      // Add the URL of the day's page you want to redirect to
+      window.location.href = "Days.html";
+    }
+
+    // Function to reset promises
+    function resetPromises() {
+      if (confirm("Are you sure you want to reset your promises?")) {
+        localStorage.removeItem("userPromises");
+        document.getElementById("userText").innerHTML = "";
+      }
+    }
+  </script>
+</body>
+</html>
