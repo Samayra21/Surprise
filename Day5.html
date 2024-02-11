@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Background Image Page</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://imgur.com/Hq5z1MC.gif'); /* Replace 'background-image.jpg' with your desired image file */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+
+  .title {
+    font-size: 3em;
+    font-family: 'Pacifico', cursive; /* Use a custom font */
+    text-align: center;
+    margin-top: 20vh;
+    /* Add neon border and black text */
+    -webkit-text-stroke: 2px #8edce6; /* Neon border */
+    color: black; /* Black text */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    padding: 10px 20px; /* Add padding to the title */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    position: relative;
+    animation: neon 1.5s ease-in-out infinite alternate;
+  }
+
+  .button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5em;
+    margin-bottom: 20vh;
+    cursor: pointer;
+    box-shadow: 0 0 20px #fecee9; /* Neon color border */
+  }
+
+  /* Define @font-face for custom font */
+  @font-face {
+    font-family: 'Pacifico';
+    src: url('https://fonts.gstatic.com/s/pacifico/v20/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* Neon animation */
+  @keyframes neon {
+    from {
+      -webkit-text-stroke: 2px #8edce6; /* Neon border */
+    }
+    to {
+      -webkit-text-stroke: 4px #fecee9; /* Neon border */
+    }
+  }
+
+  /* Style for the image container */
+  .image-container {
+    width: 200px; /* Set width of container */
+    height: 200px; /* Set height of container */
+    overflow: hidden; /* Hide overflowing content */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    margin-bottom: 20px; /* Add margin to separate from the button */
+    box-shadow: 0 0 20px #fecee9; /* Neon color border */
+  }
+
+  /* Style for the image */
+  .image-container img {
+    width: 100%; /* Make the image fill the container width */
+    height: 100%; /* Make the image fill the container height */
+    object-fit: contain; /* Ensure the whole image fits within the container without stretching */
+  }
+</style>
+</head>
+<body>
+  <div class="title">💕 HAPPY PROMISE DAY MY LOVE 💕</div>
+  <div class="image-container">
+    <img src="https://imgur.com/CvgEUQ8.jpg" alt="Small Image">
+  </div>
+  <a href="Day5pg.html" class="button">Check this day's highlight out</a>
+</body>
+</html>
