@@ -27,44 +27,6 @@
     padding: 5px 10px; /* Add padding to the highlighted text */
   }
 
-  .userPromise {
-    margin-bottom: 10px;
-  }
-
-  .editButton, .deleteButton {
-    margin-left: 10px;
-    padding: 5px 10px;
-    font-size: 14px;
-    background-color: #843c54;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  #userInput {
-    width: 80%; /* Make the input box wider */
-    height: 150px; /* Increase the height of the input box */
-    margin: 20px auto; /* Center the input box */
-    display: block;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    resize: none;
-  }
-
-  #submitButton {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    background-color: black;
-    border: none;
-    color: #ff0000;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
 
   #popupButton {
     display: block;
@@ -78,10 +40,6 @@
     cursor: pointer;
   }
 
-  .editButton.disabled, .deleteButton.disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-  }
 
   /* Popup box */
   #popupContainer {
@@ -116,17 +74,15 @@
 <body>
   <div class="container">
     <h1>Mumu's promises to <span class="highlight">Yuvu &hearts;</span></h1>
-    <p>1. I will always love you no matter what<br>2. I am never going to leave you... we will be together with each other till our last breath<br>3. I am going to take care of you all my life<br>4. I will always protect yoy from everyone<br>5. I will roam the entire world only with you<br>6. My soul is and always be yours<br>7. I will stand by you in your highs and your lows<br>8. You might be shocked after seeing this but I promise to listen and act more on what you ask me to do<br>9. I promise to amke you smile always and forever by doing whatever I can<br>10. I will do all the things and adventures I have thought of with you and only you my love.... and a lot moreee<br><br>Love you more and more,<br><br> From Mumu &hearts;</p>
+    <p>1. I will always love you no matter what<br>2. I am never going to leave you... we will be together with each other till our last breath<br>3. I am going to take care of you all my life<br>4. I will always protect yoy from everyone<br>5. I will roam the entire world only with you<br>6. My soul is and always be yours<br>7. I will stand by you in your highs and your lows<br>8. You might be shocked after seeing this but I promise to listen and act more on what you ask me to do<br>9. I promise to amke you smile always and forever by doing whatever I can<br>10. I will do all the things and adventures I have thought of with you and only you my love.... and a lot moreee<br><br>Love you more and more everyday, everyminute and everysecond,<br><br> From Mumu &hearts;</p>
   </div>
   <div class="container">
     <h1>Yuvu's promises to <span class="highlight">Mumu &hearts;</span></h1>
+    <p>1. I will always love you and i will always be with you in every situation.<br>2. I always make you happy and never break your heart and never play with your feelings.<br>3. I will always respect you and all your decisions.<br>4. I will never make fun of you or use you as a funny example.<br>5. I will always defend you and take stand for you from everyone.<br>6. I will never listen or take anything bad from anyone.<br>7. I will roam around entire world with your hands in mine.<br>8. I will treat you well and care for you everytime my princess.<br>9. I will marry you and be with you for the rest of my life.<br>10. Main tujhe hamesha manaunga tu jab bhi gussa hogi main hamesha manaunga.<br>11. I will always be your biggest chearleader.<br>12. I promise I will never break any of this promises.<br>I Love You mera Cutuuuuuuuuuuu<br><br>From Yuvu &hearts;</p>
     <div id="userText"></div>
   </div>
 
-  <textarea id="userInput" placeholder="Write your promises here..."></textarea>
-  <button id="submitButton" onclick="confirmSubmit()">Submit</button>
   <button id="popupButton" onclick="openPopup()">Open Popup</button>
-  <button id="resetButton" onclick="resetPromises()">Reset Promises</button>
 
   <!-- Popup box -->
   <div id="popupContainer">
@@ -140,67 +96,6 @@
   </div>
   
   <script>
-  // Function to add user's promises
-  function addPromise(userInput) {
-    var userText = document.getElementById("userText");
-
-    var newPromise = document.createElement("div");
-    newPromise.className = "userPromise";
-    newPromise.innerHTML = "<p>" + userInput.split("\n").join("<br>") + "</p>";
-
-    userText.appendChild(newPromise);
-
-    // Append new promises to existing ones in localStorage
-    var savedPromises = localStorage.getItem("userPromises");
-    var updatedPromises = savedPromises ? savedPromises + "\n" + userInput : userInput;
-    localStorage.setItem("userPromises", updatedPromises);
-  }
-
-  // Load user's promises from localStorage on page load
-  window.onload = function() {
-    var savedPromises = localStorage.getItem("userPromises");
-    if (savedPromises) {
-      var promisesArray = savedPromises.split("\n");
-      for (var i = 0; i < promisesArray.length; i++) {
-        addPromise(promisesArray[i]);
-      }
-
-      // Disable editing and deleting for already written promises
-      var editButtons = document.getElementsByClassName("editButton");
-      var deleteButtons = document.getElementsByClassName("deleteButton");
-      for (var i = 0; i < editButtons.length; i++) {
-        editButtons[i].classList.add("disabled");
-        deleteButtons[i].classList.add("disabled");
-      }
-    }
-  };
-
-
-    // Function to confirm submission
-  function confirmSubmit() {
-    var userInput = document.getElementById("userInput").value;
-    if (confirm("Are you sure you want to submit your promises?")) {
-      addPromise(userInput);
-    
-      // Don't set localStorage to only the new userInput, append it to existing promises
-      // Get existing promises from localStorage
-      var savedPromises = localStorage.getItem("userPromises");
-    
-      // If there are existing promises, append the new userInput
-      var updatedPromises = savedPromises ? savedPromises + "\n" + userInput : userInput;
-    
-      // Set the updated promises back to localStorage
-      localStorage.setItem("userPromises", updatedPromises);
-
-      // Enable editing and deleting for new promises
-      var editButtons = document.getElementsByClassName("editButton");
-      var deleteButtons = document.getElementsByClassName("deleteButton");
-      for (var i = 0; i < editButtons.length; i++) {
-        editButtons[i].classList.remove("disabled");
-        deleteButtons[i].classList.remove("disabled");
-      }
-    }
-  }
 
 
     // Function to open popup
