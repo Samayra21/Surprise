@@ -177,21 +177,31 @@
 
 
     // Function to confirm submission
-    function confirmSubmit() {
-      var userInput = document.getElementById("userInput").value;
-      if (confirm("Are you sure you want to submit your promises?")) {
-        addPromise(userInput);
-        localStorage.setItem("userPromises", userInput);
+  function confirmSubmit() {
+    var userInput = document.getElementById("userInput").value;
+    if (confirm("Are you sure you want to submit your promises?")) {
+      addPromise(userInput);
+    
+      // Don't set localStorage to only the new userInput, append it to existing promises
+      // Get existing promises from localStorage
+      var savedPromises = localStorage.getItem("userPromises");
+    
+      // If there are existing promises, append the new userInput
+      var updatedPromises = savedPromises ? savedPromises + "\n" + userInput : userInput;
+    
+      // Set the updated promises back to localStorage
+      localStorage.setItem("userPromises", updatedPromises);
 
-        // Enable editing and deleting for new promises
-        var editButtons = document.getElementsByClassName("editButton");
-        var deleteButtons = document.getElementsByClassName("deleteButton");
-        for (var i = 0; i < editButtons.length; i++) {
-          editButtons[i].classList.remove("disabled");
-          deleteButtons[i].classList.remove("disabled");
-        }
+      // Enable editing and deleting for new promises
+      var editButtons = document.getElementsByClassName("editButton");
+      var deleteButtons = document.getElementsByClassName("deleteButton");
+      for (var i = 0; i < editButtons.length; i++) {
+        editButtons[i].classList.remove("disabled");
+        deleteButtons[i].classList.remove("disabled");
       }
     }
+  }
+
 
     // Function to open popup
     function openPopup() {
