@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Kiss Day</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .photos {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .photo {
+    width: 250px;
+    height: 350px;
+    margin: 0 -10px; /* Adjusted margin to bring photos very close together */
+    transition: all 0.5s ease-in-out;
+  }
+  
+  #heartBtn {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  #heartContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure heart is above photos */
+  }
+  
+  #heart {
+    font-size: 100px;
+    color: red;
+    animation: heartbeat 1s infinite;
+  }
+  
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>💋 HAPPY KISS DAY BABYYY 💋</h1>
+  <div class="photos" id="photos">
+    <img src="https://imgur.com/DHa6noq.jpg" alt="Photo 1" class="photo" style="transform: translateX(-500px);">
+    <img src="https://imgur.com/09eIbUv.jpg" alt="Photo 2" class="photo" style="transform: translateX(500px);">
+  </div>
+  <button id="heartBtn" onclick="showHeart()">MATCH THIS JODI</button>
+  <div id="heartContainer" style="display: none;">
+    <div id="heart">&hearts;</div>
+  </div>
+</div>
+
+<script>
+  function showHeart() {
+    var photos = document.getElementById("photos");
+    var heartContainer = document.getElementById("heartContainer");
+    var heart = document.getElementById("heart");
+    photos.style.justifyContent = "center";
+    photos.style.transition = "all 1s ease-in-out";
+    heartContainer.style.display = "block";
+    setTimeout(function() {
+      photos.style.justifyContent = "center";
+      var photo1 = document.querySelector(".photo:nth-child(1)");
+      var photo2 = document.querySelector(".photo:nth-child(2)");
+      photo1.style.transform = "translateX(-15px)";
+      photo2.style.transform = "translateX(15px)";
+      setTimeout(function() {
+        window.location.href = "day7pg1.html"; // Replace with your desired URL
+      }, 10000); // Redirect after 10 seconds (10000 milliseconds)
+    }, 1000);
+  }
+</script>
+</body>
+</html>
